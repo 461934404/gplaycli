@@ -3,7 +3,6 @@
 import base64
 import gzip
 import pprint
-import StringIO
 import requests
 
 from google.protobuf import descriptor
@@ -13,7 +12,7 @@ from google.protobuf.message import Message, DecodeError
 
 from OpenSSL.SSL import Error as SSLError
 
-import googleplay_pb2
+import ext_libs.googleplay_api.googleplay_pb2
 import config
 
 ssl_verify="/etc/ssl/certs/ca-certificates.crt"
@@ -107,7 +106,7 @@ class GooglePlayAPI(object):
 
         # put your auth token in config.py to avoid multiple login requests
         if self.debug:
-            print "authSubToken: " + authSubToken
+            print("authSubToken: %s" % authSubToken)
 
     def login(self, email=None, password=None, authSubToken=None):
         """Login to your Google Account. You must provide either:
@@ -175,11 +174,6 @@ class GooglePlayAPI(object):
                 response = requests.get(url, headers=headers, verify=ssl_verify)
             data = response.content
 
-        '''
-        data = StringIO.StringIO(data)
-        gzipper = gzip.GzipFile(fileobj=data)
-        data = gzipper.read()
-        '''
         message = googleplay_pb2.ResponseWrapper.FromString(data)
         self._try_register_preFetch(message)
 
