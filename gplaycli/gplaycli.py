@@ -58,7 +58,7 @@ class GPlaycli(object):
             self.token = args.token
             if self.token == True:
                 self.token_url = args.token_url
-            if self.token == False and 'token' in self.config:
+            if self.token is None and 'token' in self.config:
                 self.token = self.config['token']
                 self.token_url = self.config['token_url']
             if str(self.token) == 'True':
