@@ -13,7 +13,7 @@ from google.protobuf.message import Message, DecodeError
 from OpenSSL.SSL import Error as SSLError
 
 import ext_libs.googleplay_api.googleplay_pb2
-import config
+import ext_libs.googleplay_api.config
 
 ssl_verify="/etc/ssl/certs/ca-certificates.crt"
 

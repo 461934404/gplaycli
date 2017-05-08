@@ -22,8 +22,6 @@ import argparse
 import configparser
 import time
 import requests
-from past import autotranslate
-autotranslate(['ext_libs.googleplay_api.googleplay'])
 from ext_libs.googleplay_api.googleplay import GooglePlayAPI  # GooglePlayAPI
 from ext_libs.googleplay_api.googleplay import LoginError
 from androguard.core.bytecodes import apk as androguard_apk  # Androguard
